@@ -18,7 +18,7 @@ public class Newmain {
         String filename = "words_5757.txt";
         Scanner keyboard = new Scanner(System.in);
         WordGraph wg = new WordGraph();
-        boolean play = true, init = false;
+        boolean play = true, init = false, isMenu = true;
         while(play) {
             try {
                 Scanner filescan = new Scanner(new File(path+filename));
@@ -33,21 +33,28 @@ public class Newmain {
                     init = true;
                 }
 
-                System.out.println("Enter menu >> (S = search, L = ladder, Q = quit)");
-                String mode = keyboard.next().toLowerCase();
+                while (isMenu) {
+                    isMenu = false;
+                    System.out.println("Enter menu >> (S = search, L = ladder, Q = quit)");
+                    String mode = keyboard.next().toLowerCase();
 
-                switch (mode) {
-                    case "s" :
-                        wg.search();
-                        break;
-                    case "l" :
-                        wg.ladder();
-                        break;
-                    default :
-                        System.out.println("quit");
-                        play = false;
-                        break;
+                    switch (mode) {
+                        case "s" :
+                            wg.search();
+                            break;
+                        case "l" :
+                            wg.ladder();
+                            break;
+                        case "q" :
+                            System.out.println("quit");
+                            play = false;
+                            break;
+                        default :
+                            isMenu = true;
+                    }
                 }
+
+
             } catch (Exception e) {
                 System.out.println("Enter word file =");
                 filename = keyboard.nextLine();
