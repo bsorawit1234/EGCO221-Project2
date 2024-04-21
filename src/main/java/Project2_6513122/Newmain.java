@@ -33,6 +33,7 @@ public class Newmain {
                     init = true;
                 }
 
+                isMenu = true;
                 while (isMenu) {
                     isMenu = false;
                     System.out.println("Enter menu >> (S = search, L = ladder, Q = quit)");
@@ -53,6 +54,7 @@ public class Newmain {
                             isMenu = true;
                     }
                 }
+
 
 
             } catch (Exception e) {
