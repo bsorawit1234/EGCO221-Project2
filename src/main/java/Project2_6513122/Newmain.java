@@ -114,6 +114,7 @@ class WordGraph {
 
     public void search() {
         int count = 0;
+        int total = 0;
         System.out.println("Enter keyword to search = ");
         String subword = keyboard.nextLine();
         List<String> validWords = new ArrayList<>();
@@ -122,16 +123,23 @@ class WordGraph {
                 validWords.add(word);
             }
         }
-        System.out.println("========== Available Words containing \"" + subword + "\" : ==========\n");
-        for (String word : validWords) {
-            System.out.printf("%s     ",word);
-            count++;
-            if (count == 10) {
-                System.out.println();
-                count = 0;
-            }
+        if(validWords.size() == 0){
+            System.out.println("\n======= No Available Words containing \"" + subword + "\"  =======\n");
         }
-        System.out.println("\n");
+        else {
+            System.out.println("========== Available Words containing \"" + subword + "\"  ==========\n");
+            for (String word : validWords) {
+                System.out.printf("%s     ", word);
+                count++;
+                total++;
+                if (count == 10) {
+                    System.out.println();
+                    count = 0;
+                }
+            }
+            System.out.printf("\n\n===== Total word containing with \""+ subword + "\" is %d words =====", total);
+            System.out.println("\n");
+        }
     }
 
 
