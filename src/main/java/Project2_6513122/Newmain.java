@@ -75,12 +75,9 @@ class WordGraph {
             for (String word1 : node) {
                 for (String word2 : node) {
                     if (!word1.equals(word2)) {
-                        char[] charArray1 = word1.toCharArray();
-                        char[] charArray2 = word2.toCharArray();
-
                         int diffCount = 0;
                         for (int i = 0; i < 5; i++) {
-                            if (charArray1[i] != charArray2[i]) {
+                            if (word1.charAt(i) != word2.charAt(i)) {
                                 diffCount++;
                             }
                         }
@@ -91,9 +88,9 @@ class WordGraph {
                             int count = 0;
                             Set<Integer> temp1 = new HashSet<>();
                             Set<Integer> temp2 = new HashSet<>();
-                            for (int i = 0; i < charArray1.length; i++) {
-                                for (int j = 0; j < charArray2.length; j++) {
-                                    if (charArray1[i] == charArray2[j] && !temp1.contains(i) && !temp2.contains(j)) {
+                            for (int i = 0; i < word1.length(); i++) {
+                                for (int j = 0; j < word2.length(); j++) {
+                                    if (word1.charAt(i) == word2.charAt(j) && !temp1.contains(i) && !temp2.contains(j)) {
                                         count++;
                                         temp1.add(i);
                                         temp2.add(j);
@@ -123,7 +120,7 @@ class WordGraph {
                 validWords.add(word);
             }
         }
-        if(validWords.size() == 0){
+        if(validWords.isEmpty()){
             System.out.println("\n======= No Available Words containing \"" + subword + "\"  =======\n");
         }
         else {
